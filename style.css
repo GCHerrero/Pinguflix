@@ -1,0 +1,244 @@
+/* Estilos inspirados na Netflix */
+
+:root {
+    --bg-color: #000;
+    --text-color: #fff;
+    --main-bg: rgba(255, 255, 255, 0.03);
+    --border-hover: #fff;
+}
+
+body.light {
+    --bg-color: #f4f4f4;
+    --text-color: #111;
+    --main-bg: rgba(0, 0, 0, 0.03);
+    --border-hover: #111;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Titan One', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+   
+    padding: 2rem;
+    text-align: center;
+    max-width: 800px;
+    width: 100%;
+}
+
+#theme-toggle {
+    width: 56px;
+    height: 32px;
+    border-radius: 999px;
+    border: 2px solid rgba(255, 255, 255, 0.45);
+    background: rgba(255, 255, 255, 0.1);
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+    transition: background 0.25s, border 0.25s;
+    outline: none;
+}
+
+#theme-toggle::before {
+    content: '';
+    position: absolute;
+    left: 3px;  
+    top: 55%;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #fff;
+    transform: translateY(-55%);
+    transition: transform 0.25s ease, background 0.25s ease;
+}
+
+#theme-toggle.active {
+    background: rgba(255, 255, 255, 0.55);
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+body.light #theme-toggle {
+    background: rgba(0, 0, 0, 0.2);
+    border-color: rgba(0, 0, 0, 0.3);
+}
+
+#theme-toggle.active::before {
+    transform: translate(24px, -55%);
+    background: #111;
+}
+
+main {
+    /* Alinha o texto ao centro */
+    text-align: center;
+    /* Define largura máxima de 800px */
+    max-width: 1000px;
+    /* Define largura como 100% do container pai */
+    width: 100%;
+}
+
+h1 {
+    /* Define o tamanho da fonte como 2.5rem */
+    font-size: 2.5rem;
+    /* Define margem superior negativa para aproximar da logo */
+    margin-top: -7rem;
+    /* Define margem inferior de 2rem */
+    margin-bottom: 5rem;
+    /* Define o peso da fonte como 300 (leve) */
+    font-weight: 300;
+}
+
+.logo {
+    width: 400px; /* Ajuste o tamanho aqui */
+    height: auto; /* Mantém proporção */
+    margin-top: -15rem;
+    margin-bottom: 0rem;
+}
+
+.profiles {
+    /* Usa flexbox para layout */
+    display: flex;
+    /* Centraliza os itens horizontalmente */
+    justify-content: center;
+    /* Define espaço entre itens de 1rem */
+    gap: 3rem;
+    /* Remove estilo de lista */
+    list-style: none;
+    /* Remove preenchimento */
+    padding: 0;
+    /* Remove margem */
+    margin: 0;
+}
+
+.profile {
+    /* Usa flexbox para layout */
+    display: flex;
+    /* Define direção como coluna */
+    flex-direction: column;
+    /* Centraliza itens verticalmente */
+    align-items: center;
+    /* Define cursor como ponteiro */
+    cursor: pointer;
+    /* Adiciona transição suave para transformações */
+    transition: transform 0.3s ease;
+}
+
+.profile img {
+    /* Define largura como 120px */
+    width: 150px;
+    /* Define altura como 120px */
+    height: 150px;
+    /* Torna a borda circular */
+    border-radius: 50%;
+    /* Define borda transparente de 3px */
+    border: 3px solid transparent;
+    transition: border 0.3s ease, transform 0.3s ease;
+}
+
+.profile:hover img {
+    /* Define borda branca de 2px no hover */
+    border: 3px solid var(--border-hover);
+    transform: scale(1.2);
+    
+}
+
+.profile p {
+    /* Define margem superior de 1rem */
+    margin-top: 1rem;
+    /* Define tamanho da fonte como 1.2rem */
+    font-size: 1.4rem;
+    /* Define peso da fonte como 400 (normal) */
+    font-weight: 400;
+}
+
+.profile a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.profile a:visited {
+    color: var(--text-color);
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    /* Mobile padrão (pequena tela), torna o layout mais vertical e compacta fontes/imagens */
+    h1 {
+        /* Reduz tamanho da fonte para 2rem em telas pequenas */
+        font-size: 2rem;
+    }
+
+    .profiles {
+        /* Muda direção para coluna em telas pequenas */
+        flex-direction: column;
+        /* Reduz espaço entre itens para 1rem */
+        gap: 1rem;
+    }
+
+    .profile img {
+        /* Reduz largura para 100px em telas pequenas */
+        width: 100px;
+        /* Reduz altura para 100px em telas pequenas */
+        height: 100px;
+    }
+}
+
+/* --- Novas media queries adicionadas --- */
+@media (max-width: 900px) {
+    /* Tablet / mobile grande, adiciona margem e aumenta tamanho para acesso melhor */
+    main {
+        padding: 0 1rem;
+        max-width: 650px;
+    }
+
+    h1 {
+        font-size: 2.4rem;
+    }
+
+    .profile img {
+        width: 110px;
+        height: 110px;
+    }
+
+    .profile p {
+        font-size: 1.1rem;
+    }
+}
+
+   
+
+
+@media (max-width: 420px) {
+    /* Mobile extra pequeno: ajusta altura e top para uso no modo retrato e minimizar overflow */
+    body {
+        height: auto;
+        align-items: flex-start;
+    }
+
+    main {
+        margin-top: 1.2rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .profile img {
+        width: 90px;
+        height: 90px;
+    }
+
+    .profile p {
+        font-size: 1rem;
+    }
+}
+
+/* Comentários adicionados para facilitar manutenção das media queries */
